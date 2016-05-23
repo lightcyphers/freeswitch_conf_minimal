@@ -52,7 +52,7 @@
     <!--<param name="force-register-db-domain" value="$${domain}"/>-->
     <!-- ************************************************* -->
 
-    <!--<param name="aggressive-nat-detection" value="true"/>-->
+    <param name="aggressive-nat-detection" value="true"/>
     <param name="inbound-codec-negotiation" value="generous"/>
     <param name="nonce-ttl" value="60"/>
     <param name="auth-calls" value="false"/>
@@ -63,8 +63,8 @@
     -->
     <param name="rtp-ip" value="$${local_ip_v4}"/>
     <param name="sip-ip" value="$${local_ip_v4}"/>
-    <param name="ext-rtp-ip" value="auto-nat"/>
-    <param name="ext-sip-ip" value="auto-nat"/>
+    <param name="ext-rtp-ip" value="$${external_rtp_ip}"/>
+    <param name="ext-sip-ip" value="$${external_sip_ip}"/>
     <param name="rtp-timeout-sec" value="300"/>
     <param name="rtp-hold-timeout-sec" value="1800"/>
     <!--<param name="enable-3pcc" value="true"/>-->
@@ -92,5 +92,7 @@
     <param name="tls-verify-in-subjects" value=""/>
     <!-- TLS version ("sslv23" (default), "tlsv1"). NOTE: Phones may not work with TLSv1 -->
     <param name="tls-version" value="$${sip_tls_version}"/>
+    
+    <param name="NDLB-force-rport" value="true"/>
   </settings>
 </profile>
