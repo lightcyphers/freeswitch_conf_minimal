@@ -12,6 +12,8 @@
   <X-PRE-PROCESS cmd="set" data="outbound_codec_prefs=PCMU,PCMA,GSM"/>
 
 
+  <X-PRE-PROCESS cmd="exec-set" data="bind_server_ip=curl -s http://instance-data/latest/meta-data/public-ipv4"/>
+  
   <!-- external_rtp_ip
        Can be an one of:
            ip address: "12.34.56.78"
@@ -22,7 +24,8 @@
        If unspecified, the bind_server_ip value is used.
        Used by: sofia.conf.xml dingaling.conf.xml
   -->
-  <X-PRE-PROCESS cmd="set" data="external_rtp_ip=stun:stun.freeswitch.org"/>
+  <!--<X-PRE-PROCESS cmd="set" data="external_rtp_ip=stun:stun.freeswitch.org"/>-->
+  <X-PRE-PROCESS cmd="exec-set" data="external_rtp_ip=curl -s http://instance-data/latest/meta-data/public-ipv4"/>
 
   <!-- external_sip_ip
       Used as the public IP address for SDP.
@@ -35,7 +38,8 @@
        If unspecified, the bind_server_ip value is used.
        Used by: sofia.conf.xml dingaling.conf.xml
   -->
-  <X-PRE-PROCESS cmd="set" data="external_sip_ip=stun:stun.freeswitch.org"/>
+  <!--<X-PRE-PROCESS cmd="set" data="external_sip_ip=stun:stun.freeswitch.org"/>-->
+  <X-PRE-PROCESS cmd="exec-set" data="external_sip_ip=curl -s http://instance-data/latest/meta-data/public-ipv4"/>
 
 
   <!-- outbound_caller_id and outbound_caller_name
@@ -43,7 +47,7 @@
        Used by: conference.conf.xml and user directory for default
        outbound callerid name and number.
   -->
-  <X-PRE-PROCESS cmd="set" data="outbound_caller_name=FreeSWITCH"/>
+  <X-PRE-PROCESS cmd="set" data="outbound_caller_name=LC_FS"/>
   <X-PRE-PROCESS cmd="set" data="outbound_caller_id=0000000000"/>
 
   <!-- various debug and defaults -->
